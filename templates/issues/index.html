@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}物料基本情况以及导航{% endblock %}
+{% block css_block %}
+    <style>
+        .functionModle{
+            width:500px;
+            height:300px;
+            background-color: yellow;
+        }
+    .showpage table{
+       border:1px solid black;
+        border-spacing:0;
+        padding:2px;
+        text-align: center;
+    }
+    table tr th{
+        border:1px solid black;
+    }
+    table tr td{
+        border:1px solid black;
+    }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="functionModle">
+        <form method="post" action="{% url 'issues:search' %}">
+            {% csrf_token %}
+            <input type="submit" name="submit" id="submit" value="查找">
+            <input type="text" name="search" id="search">
+        </form>
+        <br/><br/>
+        <form method="get" action="{% url 'issues:addtion' %}">
+            <input type="submit" name="add" id="add" value="添加">
+            <input type="submit" name="modify" id="modify" value="修改">
+            <label>问题的添加或者修改<label/>
+        </form>
+        <br/><br/>
+        <p>填料问题</p>
+        <form method="get" action="{% url 'issues:issuemeterial_addtion' %}">
+            <input type="submit" name="add_meterial_issue" id="add_meterial_issue" value="添加填料问题">
+            <input type="submit" name="modify_meterial_issue" id="modify_meterial_issue" value="修改填料问题">
+        </form>
+        <form method="post" action="{% url 'issues:issuemeterial_search' %}">
+            {% csrf_token %}
+            <input type="submit" name="submit_search" id="submit_search" value="查找">
+            <input type="text" name="issue_search" id="issue_search">
+        </form>
+
+
+
+    </div>
+    <p></p>
+    <div class="showpage">
+    <table>
+        <tr>
+            <th>异常情况种类</th>
+            <th>问题</th>
+            <th>原因</th>
+            <th>解决方案</th>
+        </tr>
+    {% for issu in isssues %}
+        
+            <tr>
+                <td>{{ issu.issueType }}</td>
+                <td>{{ issu.issue }}</td>
+                <td>{{ issu.reason }}</td>
+                <td>{{ issu.solution }}</td>
+{#                <td><form action="" method="post">{% csrf_token %}<input type="submit" name='submit' id='submit' value="删除"></form></td>#}
+{#                <td><a href="{% url 'issues:delete' issu.id %}">删除</a></td>#}
+             <td><a href="{% url 'issues:modifys' issu.id %}">修改</a></td>
+            </tr>
+        
+        {% empty %}
+        <p>没有物料</p>
+    {% endfor %}
+    </table>
+    </div>
+
+    <br/><br/>
+     <div class="showpage">
+    <table>
+        <tr>
+            <th>时间</th>
+            <th>填料</th>
+            <th>层柱析编号</th>
+            <th>问题类型</th>
+            <th>实际问题描述</th>
+            <th>实际问题解决方案</th>
+        </tr>
+    {% for issumeter in issumeters %}
+
+            <tr>
+                <td>{{ issumeter.pubtime }}</td>
+                <td>{{ issumeter.meterial.resinName }}</td>
+                <td>{{ issumeter.ColumnID }}</td>
+                <td>{{ issumeter.issue.issueType }}</td>
+                <td>{{ issumeter.Practiceissue }}</td>
+                <td>{{ issumeter.solutionMethod }}</td>
+{#                <td>{{ issumeter.issue.solution }}</td>#}
+{#                <td><form action="" method="post">{% csrf_token %}<input type="submit" name='submit' id='submit' value="删除"></form></td>#}
+{#                <td><a href="{% url 'issues:delete' issu.id %}">删除</a></td>#}
+                <td><a href="{% url 'issues:issuemeterial_modify' issumeter.id %}">修改</a></td>
+            </tr>
+
+        {% empty %}
+        <p>没有物料</p>
+    {% endfor %}
+    </table>
+    </div>
+
+{% endblock %}

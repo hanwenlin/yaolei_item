@@ -1,0 +1,6 @@
+"1"	"Mabselect"	"Affinity"	"GE"	"Sepharose(琼脂糖)"	"rProtain A"	"85"		"2-12"	"20%EtOH"	"1.06"	">=30"	"3"	"3"		"B"	
+"2"	"Mabselect Xtra"	"Affinity"	"GE"	"Sepharose(琼脂糖)"	"rProtain A variant"	"75"		"2-12"	"20%EtOH/2%benzy1"	"2.34"	">=40"	"9"	"3"		"C"	
+"3"	"Mabselect SuRe"	"Affinity"	"GE"	"Sepharose(琼脂糖)"	"rProtain A"	"85"		"2-14"		"1.06"	">=30"		"3"		"D"	
+"4"	"POROS"	"Affinity"	"Life"	"苯乙酸"	"rProtain A"	"50"		"2·13"		"1.78"	">=45"	"7"	"3.8"		"D"	
+"5"	"JWT203"	"Affinity"	"JSR"	"多孔聚甲基丙烯酸"	"rProtain A"	"75"		"1.5-13.5"			">=37"		"3.8"		"E"	
+"6"	"Eshmunoa"	"Affinity"	"Millipore"	"聚乙烯醚"	"rProtain A"	"49"		"2·13"		"2.34"	">=45"				"B"	

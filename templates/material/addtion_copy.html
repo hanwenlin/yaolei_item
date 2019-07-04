@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}添加数据{% endblock %}
+{% block css_block %}
+
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="{% url 'material:addtion' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td><label>物料名称 <input type="text" name="meterialName" id="meterialName"></label></td>
+            <td><label>压缩因子 <input type="text" name="comFactor" id="comFactor"></label></td>
+        </tr>
+        <tr>
+            <td><label>填料类型 <input type="text" name="meterialType" id="meterialType"></label></td>
+            <td><label>保存方法 <input type="text" name="storeMethod" id="storeMethod"></label></td>
+        </tr>
+        <tr>
+            <td><label>产家 <input type="text" name="brand" id="brand"></label></td>
+            <<td><label>DBC(mg/ml) <input type="text" name="dbc" id="dbc"></label></td>
+        </tr>
+        <tr>
+           <td><label>基质 <input type="text" name="matrix" id="matrix"></label></td>
+            <td><label>项目生产载量范围 <input type="text" name="capacityRange" id="capacityRange"></label></td>
+        </tr>
+        <tr>
+            <td><label>功能基团 <input type="text" name="ligand" id="ligand"></label></td>
+            <td><label>装柱最大流速压力 <input type="text" name="velocityPressure" id="velocityPressure"></label></td>
+        </tr>
+        <tr>
+            <td><label>直径 <input type="text" name="diameter" id="diameter"></label></td>
+            <td><label>有效期 <input type="text" name="validtyPeriod" id="validtyPeriod"></label></td>
+        </tr>
+        <tr>
+            <td><label>耐受压力类型 <input type="text" name="tolePressure" id="tolePressure"></label></td>
+            <td><label>装柱方法 <input type="text" name="packingMethod" id="packingMethod"></label></td>
+        </tr>
+        <tr>
+            <td><label>PH范围 <input type="text" name="phRange" id="phRange"></label></td>
+            <td><label>装柱方法详细 <input type="text" name="packingdetail" id="packingdetail"></label></td>
+        </tr>
+        <tr>
+            <td colspan="2"><strong>添加</strong></td>
+        </tr>
+    </table>
+    </form>
+{% endblock %}

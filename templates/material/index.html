@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}物料基本情况以及导航{% endblock %}
+{% block css_block %}
+    <style>
+        .functionModle{
+            {#width:00px;#}
+            height:100px;
+            {#background-color: green;#}
+            padding-top:10px;
+        }
+    .showpage table{
+       border:1px solid black;
+        border-spacing:0;
+        padding:2px;
+        text-align: center;
+        width:80%;
+        height:80%;
+    }
+    table tr th{
+        border:1px solid black;
+        {#width:50px;#}
+        text-overflow: ellipsis;
+    /* for Firefox,mozilla */
+    -moz-text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    }
+    table tr td{
+        border:1px solid black;
+        text-overflow: ellipsis;
+    /* for Firefox,mozilla */
+    -moz-text-overflow: ellipsis;
+        width:30px;
+    overflow: hidden;
+    white-space: nowrap;
+    }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="functionModle">
+        <form method="post" action="{% url 'material:search' %}">
+            {% csrf_token %}
+            <input type="submit" name="submit" id="submit" value="查找">
+            <input type="text" name="search" id="search">
+        </form>
+        <br/>
+        <form method="get" action="{% url 'material:addtion' %}">
+            <input type="submit" name="add" id="add" value="添加">
+            <input type="submit" name="modify" id="modify" value="修改">
+        </form>
+{#        <form method="post" action="">#}
+{#            {% csrf_token %}#}
+{#            <input type="submit" name="modify" id="modify" value="修改">#}
+{#        </form>#}
+
+    </div>
+    <p></p>
+    <div class="showpage">
+    <table>
+        <tr>
+            <th>填料名称</th>
+            <th>填料类型</th>
+            <th>厂家</th>
+            <th>基质</th>
+            <th>功能基团</th>
+            <th>直径</th>
+            <th>耐受压力</th>
+            <th>PH范围</th>
+            <th>保存方法</th>
+            <th>压缩因子</th>
+            <th>DBC(mg/ml)</th>
+            <th>项目生产载量范围</th>
+            <th>装柱最大流速压力</th>
+            <th>有效期</th>
+            <th>装柱方法类型</th>
+            <th>装柱方法</th>
+            <th>是否删除</th>
+            <th>是否修改</th>
+        </tr>
+    {% for material in materials %}
+        
+            <tr>
+                <td>{{ material.resinName }}</td>
+                <td>{{ material.resinaType }}</td>
+                <td>{{ material.brand }}</td>
+                <td>{{ material.matrix }}</td>
+                <td>{{ material.ligand }}</td>
+                <td>{{ material.diameter }}</td>
+                <td>{{ material.Pmax }}</td>
+                <td>{{ material.phRange }}</td>
+                <td>{{ material.storageMethod }}</td>
+                <td>{{ material.compactFactor }}</td>
+                <td>{{ material.dbc }}</td>
+                <td>{{ material.LoadingRangeinProject }}</td>
+                <td>{{ material.PackingVmaxandPmax }}</td>
+                <td>{{ material.expiry }}</td>
+                <td>{{ material.TypeofColomuPackingMethod }}</td>
+                <td>{{ material.ColomuPackingMethod }}</td>
+{#                <td><form action="" method="post">{% csrf_token %}<input type="submit" name='submit' id='submit' value="删除"></form></td>#}
+                <td><a href="{% url 'material:delete' material.id %}">删除</a></td>
+             <td><a href="{% url 'material:modifys' material.id %}">修改</a></td>
+            </tr>
+        
+        {% empty %}
+        <p>没有物料</p>
+    {% endfor %}
+    </table>
+    </div>
+
+{% endblock %}

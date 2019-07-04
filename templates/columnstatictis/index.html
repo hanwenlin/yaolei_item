@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}物料基本情况以及导航{% endblock %}
+{% block css_block %}
+    <style>
+    {#    .functionModle{#}
+    {#        width:500px;#}
+    {#        height:200px;#}
+    {#        background-color: green;#}
+    {#    }#}
+    {#.showpage table{#}
+    {#   border:1px solid black;#}
+    {#    border-spacing:0;#}
+    {#    padding:2px;#}
+    {#    text-align: center;#}
+    {#}#}
+    {#table tr th{#}
+    {#    border:1px solid black;#}
+    {#}#}
+    {#table tr td{#}
+    {#    border:1px solid black;#}
+    {#}#}
+      .functionModle{
+            {#width:00px;#}
+            height:100px;
+            {#background-color: green;#}
+            padding-top:10px;
+        }
+    .showpage table{
+       border:1px solid black;
+        border-spacing:0;
+        padding:2px;
+        text-align: center;
+        width:80%;
+        height:80%;
+    }
+    table tr th{
+        border:1px solid black;
+        {#width:50px;#}
+        text-overflow: ellipsis;
+    /* for Firefox,mozilla */
+    -moz-text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    }
+    table tr td{
+        border:1px solid black;
+        text-overflow: ellipsis;
+    /* for Firefox,mozilla */
+    -moz-text-overflow: ellipsis;
+        width:30px;
+    overflow: hidden;
+    white-space: nowrap;
+    }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="functionModle">
+        <form method="post" action="{% url 'columnstatictis:search' %}">
+            {% csrf_token %}
+            <input type="submit" name="submit_column" id="submit_colum" value="查找">
+            <input type="text" name="search_column" id="search_column">
+        </form>
+        <br/><br/>
+        <form method="get" action="{% url 'columnstatictis:addtion' %}">
+            <input type="submit" name="add" id="add" value="添加">
+            <input type="submit" name="modify" id="modify" value="修改">
+        </form>
+{#        <form method="post" action="">#}
+{#            {% csrf_token %}#}
+{#            <input type="submit" name="modify" id="modify" value="修改">#}
+{#        </form>#}
+
+    </div>
+    <p></p>
+    <div class="showpage">
+    <table>
+        <tr>
+            <th>填料名称</th>
+            <th>装柱项目</th>
+            <th>层析柱编号</th>
+            <th>填料编号</th>
+            <th>最低装柱流速</th>
+            <th>最高装柱流速</th>
+            <th>装柱压力</th>
+            <th>生产流速</th>
+            <th>柱高</th>
+            <th>层析柱直径</th>
+            <th>对称性</th>
+            <th>HETP</th>
+            <th>备注</th>
+            <th>是否删除</th>
+            <th>是否修改</th>
+        </tr>
+    {% for column in columns %}
+        
+            <tr>
+                <td>{{ column.resin.resinName }}</td>
+                <td>{{ column.packingproject }}</td>
+                <td>{{ column.columnid }}</td>
+                <td>{{ column.resinid }}</td>
+                <td>{{ column.minipackingvelocity }}</td>
+                <td>{{ column.maxpackingvelocity }}</td>
+                <td>{{ column.packingpressure }}</td>
+                <td>{{ column.productionvelocity }}</td>
+                <td>{{ column.columnheight }}</td>
+                <td>{{ column.columndimeter }}</td>
+                <td>{{ column.symmetry }}</td>
+                <td>{{ column.hetp }}</td>
+                <td>{{ column.comment }}</td>
+{#                <td><form action="" method="post">{% csrf_token %}<input type="submit" name='submit' id='submit' value="删除"></form></td>#}
+                <td><a href="{% url 'columnstatictis:delete' column.id %}">删除</a></td>
+             <td><a href="{% url 'columnstatictis:modifys' column.id %}">修改</a></td>
+            </tr>
+        
+        {% empty %}
+        <p>没有物料</p>
+    {% endfor %}
+    </table>
+    </div>
+
+{% endblock %}

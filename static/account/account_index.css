@@ -1,0 +1,41 @@
+.header{
+    height:50px;
+    margin-bottom: 5px;
+    /*background-color: green;*/
+}
+
+.header1{
+    display: inline;
+    float:left;
+    padding-left:5px;
+}
+.header2{
+    padding-right:10px;
+    display: inline;
+    float:right;
+}
+
+.header1 li{
+    display:inline;
+    list-style-type: none;
+    margin-right:10px;
+}
+
+.header2 li{
+    display:inline;
+    list-style-type: none;
+    /*margin-right:10px;*/
+}
+
+
+/*a:hover{*/
+    /*color:yellow;*/
+/*}*/
+
+/*a:visited{*/
+    /*color:black;*/
+/*}*/
+
+/*a:active{*/
+    /*color:red;*/
+/*}*/

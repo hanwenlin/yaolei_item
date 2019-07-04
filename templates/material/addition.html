@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}添加数据{% endblock %}
+{% block css_block %}
+
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="{% url 'material:addtion' %}">
+    {% csrf_token %}
+
+          <label>物料名称 <input type="text" name="resinName" id="resinName"></label>
+           <label>压缩因子 <input type="text" name="compactFactor" id="compactFactor"></label>
+<br/>
+            <td><label>填料类型 <input type="text" name="resinaType" id="resinaType"></label>
+            <td><label>保存方法 <input type="text" name="storageMethod" id="storageMethod"></label>
+
+        <br />
+            <label>产家 <input type="text" name="brand" id="brand"></label>
+            <label>DBC(mg/ml) <input type="text" name="dbc" id="dbc"></label>
+
+        <br />
+           <label>基质 <input type="text" name="matrix" id="matrix"></label></td>
+            <label>项目生产载量范围 <input type="text" name="LoadingRangeinProject" id="LoadingRangeinProject"></label>
+
+        <br>
+            <label>功能基团 <input type="text" name="ligand" id="ligand"></label>
+            <label>装柱最大流速压力 <input type="text" name="PackingVmaxandPmax" id="PackingVmaxandPmax"></label>
+
+        <br>
+            <label>直径 <input type="text" name="diameter" id="diameter"></label>
+            <label>有效期 <input type="text" name="expiry" id="expiry"></label>
+
+        <br>
+            <label>耐受压力类型 <input type="text" name="Pmax" id="Pmax"></label>
+            <label>装柱方法 <select name="TypeofColomuPackingMethod" id="TypeofColomuPackingMethod">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+            </select>
+            </label>
+
+        <br />
+            <label>PH范围 <input type="text" name="phRange" id="phRange"></label>
+            <label>装柱方法详细 <input type="text" name="ColomuPackingMethod" id="ColomuPackingMethod"></label>
+
+        <br>
+           <input type="submit" name="submit" id="submit" value="添加">
+
+    </form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}添加数据{% endblock %}
+{% block css_block %}
+
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="{% url 'issues:modifys' issue.id %}">
+    {% csrf_token %}
+        <label>异常情况种类 <input type="text" name="issuetype" id="issuetype" value="{{ issue.issueType }}"></label><br/>
+          <label>问题 <input type="text" name="issue" id="issue" value="{{ issue.issue }}"></label><br/>
+           <label>原因 <input type="text" name="reason" id="reason" value="{{ issue.reason }}"></label>
+        <br/>
+            <td><label>解决方案 <input type="text" name="solution" id="solution" value="{{ issue.solution }}"></label>
+        <br>
+           <input type="submit" name="submit" id="submit" value="修改">
+
+    </form>
+{% endblock %}

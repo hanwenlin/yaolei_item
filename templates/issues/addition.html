@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}添加数据{% endblock %}
+{% block css_block %}
+
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="{% url 'issues:addtion' %}">
+    {% csrf_token %}
+        <label>问题类型 <input type="text" name="issuetype" id="issuetype"></label><br/>
+          <label>问题 <input type="text" name="issue" id="issue"></label><br/>
+           <label>原因 <input type="text" name="reason" id="reason"></label><br/>
+
+            <td><label>解决方案 <input type="text" name="solution" id="solution"></label>
+
+        <br>
+           <input type="submit" name="submit" id="submit" value="添加">
+
+    </form>
+{% endblock %}

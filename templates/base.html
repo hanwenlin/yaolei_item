@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'account/account_index.css' %}">
+    {% block css_block %}{% endblock %}
+</head>
+<body>
+
+    {% include 'header.html' %}
+
+{% block content %}{% endblock %}
+
+    {% include 'footer.html' %}
+
+</body>
+</html>

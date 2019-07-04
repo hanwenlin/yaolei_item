@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}添加数据{% endblock %}
+{% block css_block %}
+
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="{% url 'issues:issuemeterial_modify' meterissues.id %}">
+    {% csrf_token %}
+        <label>时间 <input type="text" name="pubtime" id="pubtime" value="{{ meterissues.pubtime }}"></label><br/>
+          <label>填料 <input type="text" name="meterial" id="meterial" value="{{ meterissues.meterial.resinName }}"></label><br/>
+        <label>层柱析编号 <input type="text" name="ColumnID" id="ColumnID" value="{{ meterissues.ColumnID }}"></label><br/>
+           <label>问题类型 <input type="text" name="issuetype" id="issuetype" value="{{ meterissues.issue.issueType }}"></label><br/>
+            <label>实际问题描述 <input type="text" name="Practiceissue" id="Practiceissue" value="{{ meterissues.Practiceissue }}"></label><br/>
+           <label>解决方案 <input type="text" name="solutionMethod" id="solutionMethod" value="{{ meterissues.solutionMethod }}"></label>
+
+        <br>
+           <input type="submit" name="submit" id="submit" value="修改">
+
+    </form>
+{% endblock %}
