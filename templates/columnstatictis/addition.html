@@ -8,34 +8,36 @@
 {% block content %}
     <form method="post" action="{% url 'columnstatictis:addtion' %}">
     {% csrf_token %}
+        <table class="add_modifition">
+            <tr>
+                <td><label for="resin">填料名称:</label></td><td> <input type="text" name="resin" id="resin"></td>
+                <td><label for="packingproject">装柱项目: </label></td><td> <input type="text" name="packingproject" id="packingproject"></td>
+            </tr>
+            <tr>
+                <td><label for="columnid">层析柱编号: </label></td><td> <input type="text" name="columnid" id="columnid"></td>
+                <td><label for="resinid">填料编号: </label></td><td> <input type="text" name="resinid" id="resinid"></td>
+            </tr>
+            <tr>
+                <td><label for="minipackingvelocity">最低装柱流速: </label></td><td> <input type="text" name="minipackingvelocity" id="minipackingvelocity"></td>
+                <td><label for="maxpackingvelocity">最高装柱流速:</label></td><td> <input type="text" name="maxpackingvelocity" id="maxpackingvelocity"></td>
+            </tr>
+            <tr>
+                <td><label for="packingpressure">装柱压力: </label></td><td><input type="text" name="packingpressure" id="packingpressure"></td>
+                <td><label for="productionvelocity">生产流速:</label></td><td><input type="text" name="productionvelocity" id="productionvelocity"></td>
+            </tr>
+            <tr>
+                <td><label for="columnheight">柱高: </label></td><td> <input type="text" name="columnheight" id="columnheight"></td>
+                <td><label for="columndimeter">层析柱直径: </label></td><td> <input type="text" name="columndimeter" id="columndimeter"></td>
+            </tr>
+            <tr>
+                <td><label for="symmetry">对称性:</label></td><td> <input type="text" name="symmetry" id="symmetry"></td>
+                <td><label for="hetp">HETP: </label></td><td> <input type="text" name="hetp" id="hetp"></td>
+            </tr>
+            <tr>
+                <td><label for="comment">备注: </label></td><td> <input type="text" name="comment" id="comment"></td>
+            </tr>
+        </table>
 
-          <label>填料名称 <input type="text" name="resin" id="resin"></label>
-           <label>装柱项目 <input type="text" name="packingproject" id="packingproject"></label>
-<br/>
-            <td><label>层析柱编号 <input type="text" name="columnid" id="columnid"></label>
-            <td><label>填料编号 <input type="text" name="resinid" id="resinid"></label>
-
-        <br />
-            <label>最低装柱流速 <input type="text" name="minipackingvelocity" id="minipackingvelocity"></label>
-            <label>最高装柱流速 <input type="text" name="maxpackingvelocity" id="maxpackingvelocity"></label>
-
-        <br />
-           <label>装柱压力 <input type="text" name="packingpressure" id="packingpressure"></label></td>
-            <label>生产流速 <input type="text" name="productionvelocity" id="productionvelocity"></label>
-
-        <br>
-            <label>柱高 <input type="text" name="columnheight" id="columnheight"></label>
-            <label>层析柱直径 <input type="text" name="columndimeter" id="columndimeter"></label>
-
-        <br>
-            <label>对称性 <input type="text" name="symmetry" id="symmetry"></label>
-            <label>HETP <input type="text" name="hetp" id="hetp"></label>
-
-        <br>
-            <label>备注 <input type="text" name="comment" id="comment"></label>
-
-        <br>
            <input type="submit" name="submit" id="submit" value="添加">
-
     </form>
 {% endblock %}

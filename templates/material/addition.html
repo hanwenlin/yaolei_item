@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block title %}添加数据{% endblock %}
 {% block css_block %}
 
@@ -8,45 +7,95 @@
 {% block content %}
     <form method="post" action="{% url 'material:addtion' %}">
     {% csrf_token %}
+        <table class="add_modifition">
+    <tr>
 
-          <label>物料名称 <input type="text" name="resinName" id="resinName"></label>
-           <label>压缩因子 <input type="text" name="compactFactor" id="compactFactor"></label>
-<br/>
-            <td><label>填料类型 <input type="text" name="resinaType" id="resinaType"></label>
-            <td><label>保存方法 <input type="text" name="storageMethod" id="storageMethod"></label>
+        <td><label for="resinName">物料名称: </label></td><td><input type="text" name="resinName" id="resinName"></td>
+        <td><label for="compactFactor">压缩因子: </label></td><td><input type="text" name="compactFactor" id="compactFactor"></td>
+    </tr>
+    <tr>
 
-        <br />
-            <label>产家 <input type="text" name="brand" id="brand"></label>
-            <label>DBC(mg/ml) <input type="text" name="dbc" id="dbc"></label>
+        <td><label for="resinaType">填料类型: </label></td><td><input type="text" name="resinaType" id="resinaType"></td>
+        <td><label for="storageMethod">保存方法: </label> </td><td> <input type="text" name="storageMethod" id="storageMethod"></td>
 
-        <br />
-           <label>基质 <input type="text" name="matrix" id="matrix"></label></td>
-            <label>项目生产载量范围 <input type="text" name="LoadingRangeinProject" id="LoadingRangeinProject"></label>
+    </tr>
+    <tr>
 
-        <br>
-            <label>功能基团 <input type="text" name="ligand" id="ligand"></label>
-            <label>装柱最大流速压力 <input type="text" name="PackingVmaxandPmax" id="PackingVmaxandPmax"></label>
+        <td><label for="brand">产家: </label></td><td><input type="text" name="brand" id="brand"></td>
+        <td><label for="dbc">DBC(mg/ml):  </label></td><td><input type="text" name="dbc" id="dbc"></td>
+    </tr>
+    <tr>
+        <td> <label for="matrix">基质: </label></td><td><input type="text" name="matrix" id="matrix"></td>
+        <td><label for="LoadingRangeinProject">项目生产载量范围: </label></td><td><input type="text" name="LoadingRangeinProject" id="LoadingRangeinProject"></td>
+    </tr>
+    <tr>
+        <td><label for="ligand">功能基团: </label></td> <td><input type="text" name="ligand" id="ligand"></td>
+        <td><label for="PackingVmaxandPmax">装柱最大流速压力: </label></td><td><input type="text" name="PackingVmaxandPmax" id="PackingVmaxandPmax"></td>
 
-        <br>
-            <label>直径 <input type="text" name="diameter" id="diameter"></label>
-            <label>有效期 <input type="text" name="expiry" id="expiry"></label>
+    </tr>
+    <tr>
+        <td><label for="diameter">直径: </label><td> <input type="text" name="diameter" id="diameter"></td>
+        <td>  <label for="expiry">有效期: </label></td><td> <input type="text" name="expiry" id="expiry"></td>
 
-        <br>
-            <label>耐受压力类型 <input type="text" name="Pmax" id="Pmax"></label>
-            <label>装柱方法 <select name="TypeofColomuPackingMethod" id="TypeofColomuPackingMethod">
+    </tr>
+    <tr>
+    <td><label for="Pmax">耐受压力类型:  </label></td><td><input type="text" name="Pmax" id="Pmax"></td>
+    <td> <label for="TypeofColomuPackingMethod">装柱方法:  </label></td><td><select name="TypeofColomuPackingMethod" id="TypeofColomuPackingMethod">
                 <option value="A">A</option>
                 <option value="B">B</option>
                 <option value="C">C</option>
                 <option value="D">D</option>
                 <option value="E">E</option>
-            </select>
-            </label>
+</select></td>
+    </tr>
+    <tr>
+    <td><label for="phRange">PH范围:  </label><td><input type="text" name="phRange" id="phRange"></td>
+    <td> <label for="ColomuPackingMethod">装柱方法详细:  </label><td><input type="text" name="ColomuPackingMethod" id="ColomuPackingMethod"></td>
+    </tr>
 
-        <br />
-            <label>PH范围 <input type="text" name="phRange" id="phRange"></label>
-            <label>装柱方法详细 <input type="text" name="ColomuPackingMethod" id="ColomuPackingMethod"></label>
+</table>
 
-        <br>
+{##}
+{#                <label>物料名称 <input type="text" name="resinName" id="resinName"></label>#}
+{#           <label>压缩因子 <input type="text" name="compactFactor" id="compactFactor"></label>#}
+{#<br/>#}
+{#            <label>填料类型 <input type="text" name="resinaType" id="resinaType"></label>#}
+{#            <label>保存方法 <input type="text" name="storageMethod" id="storageMethod"></label>#}
+{##}
+{#        <br />#}
+{#            <label>产家<input type="text" name="brand" id="brand"></label>#}
+{#            <label>DBC(mg/ml) <input type="text" name="dbc" id="dbc"></label>#}
+{##}
+{#        <br />#}
+{##}
+{#           <label>基质 <input type="text" name="matrix" id="matrix"></label>#}
+{#            <label>项目生产载量范围 <input type="text" name="LoadingRangeinProject" id="LoadingRangeinProject"></label>#}
+{##}
+{#        <br>#}
+{#            <label>功能基团 <input type="text" name="ligand" id="ligand"></label>#}
+{#            <label>装柱最大流速压力 <input type="text" name="PackingVmaxandPmax" id="PackingVmaxandPmax"></label>#}
+{##}
+{#        <br>#}
+{#            <label>直径 <input type="text" name="diameter" id="diameter"></label>#}
+{#            <label>有效期 <input type="text" name="expiry" id="expiry"></label>#}
+{##}
+{#        <br>#}
+{#            <label>耐受压力类型 <input type="text" name="Pmax" id="Pmax"></label>#}
+{#            <label>装柱方法 <select name="TypeofColomuPackingMethod" id="TypeofColomuPackingMethod">#}
+{#                <option value="A">A</option>#}
+{#                <option value="B">B</option>#}
+{#                <option value="C">C</option>#}
+{#                <option value="D">D</option>#}
+{#                <option value="E">E</option>#}
+{#            </select>#}
+{#            </label>#}
+{##}
+{#        <br />#}
+{#            <label>PH范围 <input type="text" name="phRange" id="phRange"></label>#}
+{#            <label>装柱方法详细 <input type="text" name="ColomuPackingMethod" id="ColomuPackingMethod"></label>#}
+{#            </div>#}
+{##}
+{#        <br>#}
            <input type="submit" name="submit" id="submit" value="添加">
 
     </form>

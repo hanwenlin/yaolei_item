@@ -5,10 +5,11 @@ from .models import ResinLabel
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
-# Create your views here.
+
 def index(request):
     materials = ResinLabel.objects.all()
     return render(request,'material/index.html',{"materials":materials})
+
 
 @login_required(login_url='/account/login/')
 def delete(request,meterid):
@@ -31,6 +32,7 @@ def search(request):
                                           Q(TypeofColomuPackingMethod__contains=search_name)|Q(ColomuPackingMethod__contains=search_name)
                                           )
     return render(request,'material/index.html',{"materials":materials})
+
 
 @login_required(login_url='/account/login/')
 def addtion(request):
@@ -64,6 +66,7 @@ def addtion(request):
         return redirect(reverse('material:index', args=()))
 
     return render(request, 'material/addition.html')
+
 
 @login_required(login_url='/account/login/')
 def modifys(request,meterid):

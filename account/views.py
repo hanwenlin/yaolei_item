@@ -5,10 +5,6 @@ from django.http import HttpResponse
 from .forms import LoginForm,RegistrationForm
 
 
-
-# Create your views here.
-
-
 def register(request):
     if request.method == 'POST':
         user_form = RegistrationForm(request.POST)

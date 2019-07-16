@@ -34,14 +34,14 @@
         <br/><br/>
         <form method="get" action="{% url 'issues:addtion' %}">
             <input type="submit" name="add" id="add" value="添加">
-            <input type="submit" name="modify" id="modify" value="修改">
+{#            <input type="submit" name="modify" id="modify" value="修改">#}
             <label>问题的添加或者修改<label/>
         </form>
         <br/><br/>
         <p>填料问题</p>
         <form method="get" action="{% url 'issues:issuemeterial_addtion' %}">
             <input type="submit" name="add_meterial_issue" id="add_meterial_issue" value="添加填料问题">
-            <input type="submit" name="modify_meterial_issue" id="modify_meterial_issue" value="修改填料问题">
+{#            <input type="submit" name="modify_meterial_issue" id="modify_meterial_issue" value="修改填料问题">#}
         </form>
         <form method="post" action="{% url 'issues:issuemeterial_search' %}">
             {% csrf_token %}

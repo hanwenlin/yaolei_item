@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block title %}添加数据{% endblock %}
 {% block css_block %}
 
@@ -8,45 +7,46 @@
 {% block content %}
     <form method="post" action="{% url 'material:modifys' material.id %}">
     {% csrf_token %}
-
-          <label>物料名称 <input type="text" name="resinName" id="resinName" value="{{ material.resinName }}"></label>
-           <label>压缩因子 <input type="text" name="compactFactor" id="compactFactor" value="{{ material.compactFactor }}"></label>
-<br/>
-            <td><label>填料类型 <input type="text" name="resinaType" id="resinaType" value="{{ material.resinaType }}"></label>
-            <td><label>保存方法 <input type="text" name="storageMethod" id="storageMethod" value="{{ material.storageMethod }}"></label>
-
-        <br />
-            <label>产家 <input type="text" name="brand" id="brand" value="{{ material.brand }}"></label>
-            <label>DBC(mg/ml) <input type="text" name="dbc" id="dbc" value="{{ material.dbc }}"></label>
-
-        <br />
-           <label>基质 <input type="text" name="matrix" id="matrix" value="{{ material.matrix }}"></label></td>
-            <label>项目生产载量范围 <input type="text" name="LoadingRangeinProject" id="LoadingRangeinProject" value="{{ material.LoadingRangeinProject }}"></label>
-
-        <br>
-            <label>功能基团 <input type="text" name="ligand" id="ligand" value="{{ material.ligand }}"></label>
-            <label>装柱最大流速压力 <input type="text" name="PackingVmaxandPmax" id="PackingVmaxandPmax" value="{{ material.PackingVmaxandPmax }}"></label>
-
-        <br>
-            <label>直径 <input type="text" name="diameter" id="diameter" value="{{ material.diameter }}"></label>
-            <label>有效期 <input type="text" name="expiry" id="expiry" value="{{ material.expiry }}"></label>
-
-        <br>
-            <label>耐受压力类型 <input type="text" name="Pmax" id="Pmax" value="{{ material.Pmax }}"></label>
-            <label>装柱方法 <select name="TypeofColomuPackingMethod" id="TypeofColomuPackingMethod">
+    <table class="add_modifition">
+        <tr>
+            <td><label for="resinName">物料名称: </label></td><td> <input type="text" name="resinName" id="resinName" value="{{ material.resinName }}"></td>
+            <td><label for="compactFactor">压缩因子: </label></td><td> <input type="text" name="compactFactor" id="compactFactor" value="{{ material.compactFactor }}"></td>
+        </tr>
+        <tr>
+            <td><label for="resinaType">填料类型: </label></td><td><input type="text" name="resinaType" id="resinaType" value="{{ material.resinaType }}"></td>
+            <td><label for="storageMethod">保存方法: </label></td> <td><input type="text" name="storageMethod" id="storageMethod" value="{{ material.storageMethod }}"></td>
+        </tr>
+        <tr>
+            <td><label for="brand">产家: </label></td><td><input type="text" name="brand" id="brand" value="{{ material.brand }}"></td>
+            <td><label for="dbc">DBC(mg/ml): </label></td><td><input type="text" name="dbc" id="dbc" value="{{ material.dbc }}"></td>
+        </tr>
+        <tr>
+            <td><label for="matrix">基质: </label></td><td><input type="text" name="matrix" id="matrix" value="{{ material.matrix }}"></td>
+            <td><label for="LoadingRangeinProject">项目生产载量范围: </label></td><td><input type="text" name="LoadingRangeinProject" id="LoadingRangeinProject" value="{{ material.LoadingRangeinProject }}"></td>
+        </tr>
+        <tr>
+            <td><label for="ligand">功能基团: </label></td><td><input type="text" name="ligand" id="ligand" value="{{ material.ligand }}"></td>
+            <td><label for="PackingVmaxandPmax">装柱最大流速压力: </label></td><td><input type="text" name="PackingVmaxandPmax" id="PackingVmaxandPmax" value="{{ material.PackingVmaxandPmax }}"></td>
+        </tr>
+        <tr>
+            <td><label for="diameter">直径: </label></td> <td><input type="text" name="diameter" id="diameter" value="{{ material.diameter }}"></td>
+            <td><label for="expiry">有效期: </label></td> <td><input type="text" name="expiry" id="expiry" value="{{ material.expiry }}"></td>
+        </tr>
+        <tr>
+            <td><label for="Pmax">耐受压力类型:  </label></td><td><input type="text" name="Pmax" id="Pmax" value="{{ material.Pmax }}"></td>
+            <td><label for="TypeofColomuPackingMethod">装柱方法: </label></td><td><select name="TypeofColomuPackingMethod" id="TypeofColomuPackingMethod">
                 <option value="A" {% if material.TypeofColomuPackingMethod == 'A' %} selected {% endif %}>A</option>
                 <option value="B" {% if material.TypeofColomuPackingMethod == 'B' %} selected {% endif %}>B</option>
                 <option value="C" {% if material.TypeofColomuPackingMethod == 'C' %} selected {% endif %}>C</option>
                 <option value="D" {% if material.TypeofColomuPackingMethod == 'D' %} selected {% endif %}>D</option>
                 <option value="E" {% if material.TypeofColomuPackingMethod == 'E' %} selected {% endif %}>E</option>
-            </select>
-            </label>
-
-        <br />
-            <label>PH范围 <input type="text" name="phRange" id="phRange" value="{{ material.phRange }}"></label>
-            <label>装柱方法详细 <input type="text" name="ColomuPackingMethod" id="ColomuPackingMethod" value="{{ material.ColomuPackingMethod}}"></label>
-
-        <br>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label for="phRange">PH范围: </label></td><td><input type="text" name="phRange" id="phRange" value="{{ material.phRange }}"></td>
+            <td><label for="ColomuPackingMethod">装柱方法详细: </label></td><td><input type="text" name="ColomuPackingMethod" id="ColomuPackingMethod" value="{{ material.ColomuPackingMethod}}"></td>
+        </tr>
+    </table>
            <input type="submit" name="submit" id="submit" value="修改">
 
     </form>

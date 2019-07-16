@@ -1,0 +1,24 @@
+.add_modifition td{
+    text-align: right;
+}
+
+.add_modifition td:nth-child(even){
+    padding-right: 30px;
+    text-align: left;
+}
+
+.divnav{
+        border:1px solid green;
+        width:400px;
+        height:80px;
+        padding:20px;
+        margin:20px;
+        text-align:center;
+        line-height: 80px;
+        font-size:40px;
+        color:black;
+    }
+
+ .divnav>a{
+        text-decoration: none;
+    }

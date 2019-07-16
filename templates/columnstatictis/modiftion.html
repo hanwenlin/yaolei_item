@@ -8,33 +8,35 @@
 {% block content %}
     <form method="post" action="{% url 'columnstatictis:modifys' column.id %}">
     {% csrf_token %}
-
-            <label>填料名称 <input type="text" name="resin" id="resin" value="{{ column.resin.resinName }}"></label>
-           <label>装柱项目 <input type="text" name="packingitem" id="packingitem" value="{{ column.packingproject }}"></label>
-<br/>
-            <td><label>层析柱编号 <input type="text" name="histcode" id="histcode" value="{{ column.columnid }}"></label>
-            <td><label>填料编号 <input type="text" name="resincode" id="resincode" value="{{ column.resinid }}"></label>
-
-        <br />
-            <label>最低装柱流速 <input type="text" name="lowestspeed" id="lowestspeed" value="{{ column.minipackingvelocity }}"></label>
-            <label>最高装柱流速 <input type="text" name="hightspeed" id="hightspeed" value="{{ column.maxpackingvelocity }}"></label>
-
-        <br />
-           <label>装柱压力 <input type="text" name="pressure" id="pressure" value="{{ column.packingpressure }}"></label></td>
-            <label>生产流速 <input type="text" name="yieldspeed" id="yieldspeed" value="{{ column.productionvelocity }}"></label>
-
-        <br>
-            <label>柱高 <input type="text" name="columnheight" id="columnheight" value="{{ column.columnheight }}"></label>
-            <label>层析柱直径 <input type="text" name="columndimeter" id="columndimeter" value="{{ column.columndimeter }}"></label>
-
-        <br>
-            <label>对称性 <input type="text" name="symmetry" id="symmetry" value="{{ column.symmetry }}"></label>
-            <label>HETP <input type="text" name="hetp" id="hetp" value="{{ column.hetp }}"></label>
-
-        <br>
-            <label>备注 <input type="text" name="comment" id="comment" value="{{ column.comment }}"></label>
-
-        <br>
+        <table class="add_modifition">
+            <tr>
+                <td><label for="resin">填料名称: </label></td><td><input type="text" name="resin" id="resin" value="{{ column.resin.resinName }}"></td>
+                <td><label for="packingitem">装柱项目: </label></td><td><input type="text" name="packingitem" id="packingitem" value="{{ column.packingproject }}"></td>
+            </tr>
+            <tr>
+                <td><label for="histcode">层析柱编号:</label></td><td> <input type="text" name="histcode" id="histcode" value="{{ column.columnid }}"></td>
+                <td><label for="resincode">填料编号: </label></td><td> <input type="text" name="resincode" id="resincode" value="{{ column.resinid }}"></td>
+            </tr>
+            <tr>
+                <td><label for="lowestspeed">最低装柱流速:</label></td><td><input type="text" name="lowestspeed" id="lowestspeed" value="{{ column.minipackingvelocity }}"></td>
+                <td><label for="hightspeed">最高装柱流速: </label></td><td> <input type="text" name="hightspeed" id="hightspeed" value="{{ column.maxpackingvelocity }}"></td>
+            </tr>
+            <tr>
+                <td><label for="pressure">装柱压力:</label></td><td> <input type="text" name="pressure" id="pressure" value="{{ column.packingpressure }}"></td>
+                <td><label for="yieldspeed">生产流速: </label></td> <td><input type="text" name="yieldspeed" id="yieldspeed" value="{{ column.productionvelocity }}"></td>
+            </tr>
+            <tr>
+                <td><label for="columnheight">柱高:</label></td><td><input type="text" name="columnheight" id="columnheight" value="{{ column.columnheight }}"></td>
+                <td><label for="columndimeter">层析柱直径:</label></td><td> <input type="text" name="columndimeter" id="columndimeter" value="{{ column.columndimeter }}"></td>
+            </tr>
+            <tr>
+                <td><label for="symmetry">对称性:</label></td><td> <input type="text" name="symmetry" id="symmetry" value="{{ column.symmetry }}"></td>
+                <td><label for="hetp">HETP: </label></td><td> <input type="text" name="hetp" id="hetp" value="{{ column.hetp }}"></td>
+            </tr>
+            <tr>
+                <td><label for="comment">备注: </label></td><td> <input type="text" name="comment" id="comment" value="{{ column.comment }}"></td>
+            </tr>
+        </table>
            <input type="submit" name="submit" id="submit" value="修改">
 
     </form>

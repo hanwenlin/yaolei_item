@@ -6,7 +6,7 @@ from material.models import  ResinLabel
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+
 def index(request):
     columns = PressureandVelocity.objects.all()
     return render(request,'columnstatictis/index.html',{"columns":columns})
