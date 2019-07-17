@@ -18,3 +18,8 @@ class PressureandVelocity(models.Model):
     hetp = models.CharField(max_length=20,verbose_name='HETP',blank=True)  #浮点数3位
     comment = models.CharField(max_length=1000,verbose_name='备注',blank=True)
 
+    class Meta:
+        permissions = [
+            ('black_article', '拉黑压力流速表的权限'),
+        ]
+

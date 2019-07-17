@@ -12,8 +12,8 @@ def index(request):
     return render(request,'columnstatictis/index.html',{"columns":columns})
 
 @login_required(login_url='/account/login/')
-def delete(request,columnid):
-    PressureandVelocity.objects.get(id=columnid).delete()
+def delete(request,column_id):
+    PressureandVelocity.objects.get(id=column_id).delete()
     return redirect(reverse('columnstatictis:index',args=()))
 
 def search(request):
@@ -62,10 +62,12 @@ def addtion(request):
     return render(request, 'columnstatictis/addition.html')
 
 @login_required(login_url='/account/login/')
-def modifys(request,columnid):
-    column = PressureandVelocity.objects.get(id=columnid)
+def modifys(request,column_id):
+    print(column_id)
+    column = PressureandVelocity.objects.get(id=column_id)
     if request.method=='POST':
         clean_data = request.POST
+        print(clean_data)
         # clean_data = request.POST
         resin = clean_data.get('resin')
         packingproject = clean_data.get('packingproject')
@@ -81,9 +83,19 @@ def modifys(request,columnid):
         hetp = clean_data.get('hetp')
         comment = clean_data.get('comment')
         resin_id = ResinLabel.objects.get(resinName=resin).id
+        print(columnid)
+        # PressureandVelocity.objects.filter(id=columnid).update(clean_data)
 
-        PressureandVelocity.objects.filter(id=columnid).update(packingproject=packingproject,columnid=columnid,resinid=resinid,minipackingvelocity=minipackingvelocity,
+        PressureandVelocity.objects.filter(id=column_id).update(packingproject=packingproject,columnid=columnid,resinid=resinid,minipackingvelocity=minipackingvelocity,
                                        maxpackingvelocity=maxpackingvelocity,packingpressure=packingpressure,productionvelocity=productionvelocity,columnheight=columnheight,
-                                       columndimeter=columndimeter,symmetry=symmetry,hetp=hetp,comment=comment,resin_id=resin_id)
+                                       columndimeter=columndimeter,symmetry=symmetry,hetp=hetp,comment=comment, resin_id=resin_id)
+        # PressureandVelocity.objects.filter(id=columnid).update(packingproject=packingproject, columnid=columnid,
+        #                                                        resinid=resinid, minipackingvelocity=minipackingvelocity,
+        #                                                        maxpackingvelocity=maxpackingvelocity,
+        #                                                        packingpressure=packingpressure,
+        #                                                        productionvelocity=productionvelocity,
+        #                                                        columnheight=columnheight,
+        #                                                        columndimeter=columndimeter, symmetry=symmetry,
+        #                                                        hetp=hetp, comment=comment, resin_id=resin_id)
         return redirect(reverse('columnstatictis:index', args=()))
     return render(request,'columnstatictis/modiftion.html',{"column":column})
