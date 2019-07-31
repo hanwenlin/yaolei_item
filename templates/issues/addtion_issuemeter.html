@@ -8,13 +8,33 @@
 {% block content %}
     <form method="post" action="{% url 'issues:issuemeterial_addtion' %}">
     {% csrf_token %}
-        <label>时间 <input type="text" name="pubtime" id="pubtime"></label><br/>
-          <label>填料 <input type="text" name="meterial" id="meterial"></label><br/>
-        <label>层柱析编号 <input type="text" name="ColumnID" id="ColumnID"></label><br/>
-           <label>问题类型 <input type="text" name="issuetype" id="issuetype"></label><br/>
-            <label>实际问题描述 <input type="text" name="Practiceissue" id="Practiceissue"></label><br/>
-            <label>解决方案 <input type="text" name="solutionMethod" id="solutionMethod"></label>
-
+{#        <label>时间 <input type="text" name="pubtime" id="pubtime"></label><br/>#}
+{#          <label>填料 <input type="text" name="meterial" id="meterial"></label><br/>#}
+{#        <label>层柱析编号 <input type="text" name="ColumnID" id="ColumnID"></label><br/>#}
+{#           <label>问题类型 <input type="text" name="issuetype" id="issuetype"></label><br/>#}
+{#            <label>实际问题描述 <input type="text" name="Practiceissue" id="Practiceissue"></label><br/>#}
+{#            <label>解决方案 <input type="text" name="solutionMethod" id="solutionMethod"></label>#}
+{#        <table class="add_modifition">#}
+        <table class="add_modifition">
+        <tr>
+                <td><label for="pubtime">时间:</label></td><td> <input type="text" name="pubtime" id="pubtime"></td>
+            </tr>
+            <tr>
+                <td><label for="meterial">填料: </label></td><td> <input type="text" name="meterial" id="meterial"></td>
+            </tr>
+            <tr>
+                <td><label for="ColumnID">层柱析编号: </label></td><td> <input type="text" name="ColumnID" id="ColumnID"></td>
+            </tr>
+            <tr>
+                <td><label for="issuetype">问题类型: </label></td><td><input type="text" name="issuetype" id="issuetype"></td>
+            </tr>
+            <tr>
+                <td><label for="Practiceissue">实际问题描述: </label></td><td><input type="text" name="Practiceissue" id="Practiceissue"></td>
+            </tr>
+            <tr>
+                <td><label for="solutionMethod">解决方案: </label></td><td><input type="text" name="solutionMethod" id="solutionMethod"></td>
+            </tr>
+        </table>
         <br>
            <input type="submit" name="submit" id="submit" value="添加">
 

@@ -62,17 +62,17 @@ def addtion(request):
         TypeofColomuPackingMethod = clean_data.get('TypeofColomuPackingMethod')
         # print(TypeofColomuPackingMethod)
         ColomuPackingMethod = clean_data.get('ColomuPackingMethod')
-        if user.has_perm('material.add_resinlabel'):
-            ResinLabel.objects.create(resinName=resinName,resinaType=resinaType,brand=brand,
+        # if user.has_perm('material.add_resinlabel'):
+        ResinLabel.objects.create(resinName=resinName,resinaType=resinaType,brand=brand,
                                  matrix=matrix,ligand=ligand,diameter=diameter,Pmax=Pmax,
                                   phRange=phRange,storageMethod=storageMethod,compactFactor=compactFactor,dbc=dbc,
                                   LoadingRangeinProject=LoadingRangeinProject,PackingVmaxandPmax=PackingVmaxandPmax,expiry=expiry,
                                   TypeofColomuPackingMethod=TypeofColomuPackingMethod,ColomuPackingMethod=ColomuPackingMethod)
         # return render(request, 'material/addition.html')
         #     return redirect(reverse('material:index', args=()))
-        else:
-            message = '该用户禁止添加操作'
-            return render(request, 'index/prompt_message.html', {"message": message})
+        # else:
+        #     message = '该用户禁止添加操作'
+        #     return render(request, 'index/prompt_message.html', {"message": message})
             # return HttpResponse('该用户禁止添加操作')
 
         return redirect(reverse('material:index', args=()))
@@ -109,7 +109,8 @@ def modifys(request,meterid):
         print(user.get_group_permissions())         #是一个集合，这是所属组的权限
         # print(user.user_permissions.all())
         # if user.has_perm('material.change_resinlabel'):
-        if 'material.change_resinlabel' in user.get_group_permissions():
+        # if 'material.change_resinlabel' in user.get_group_permissions():
+        if user.has_perm('material.change_resinlabel'):
             ResinLabel.objects.filter(id=meterid).update(resinName=resinName,resinaType=resinaType,brand=brand,
                                  matrix=matrix,ligand=ligand,diameter=diameter,Pmax=Pmax,
                                   phRange=phRange,storageMethod=storageMethod,compactFactor=compactFactor,dbc=dbc,

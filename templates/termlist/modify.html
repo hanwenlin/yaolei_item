@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}修改{% endblock %}
+{% block css_block %}{% endblock %}
+{% block content %}
+    <form method="post" action="{% url 'termlist:modifys' application.id %}">{% csrf_token %}
+            <table class="add_modifition">
+{#                {% for applitcation in applications %}#}
+    <tr>
+
+        <td><label for="productnumber">项目号: </label></td><td><input type="text" name="productnumber" id="productnumber" value="{{ application.productnumber }}"></td>
+        <td><label for="producttime">生产时间: </label></td><td><input type="text" name="producttime" id="producttime" value="{{ application.producttime|date:'Y-m-d' }}"></td>
+    </tr>
+    <tr>
+
+        <td><label for="editorstaff">编辑人: </label></td><td><input type="text" name="editorstaff" id="editorstaff" value="{{ application.editorstaff }}"></td>
+        <td><label for="resinname">填料名称: </label> </td><td> <input type="text" name="resinname" id="resinname" value="{{ application.resinname }}"></td>
+
+    </tr>
+    <tr>
+
+        <td><label for="cycletime">循环次数: </label></td><td><input type="text" name="cycletime" id="cycletime" value="{{ application.cycletime }}"></td>
+        <td><label for="public">是否专用:  </label></td><td><input type="text" name="public" id="public" value="{{ application.public }}"></td>
+    </tr>
+    <tr>
+        <td> <label for="diameter">层析柱直径: </label></td><td><input type="text" name="diameter" id="diameter" value="{{ application.diameter }}"></td>
+        <td><label for="height">柱高: </label></td><td><input type="text" name="height" id="height" value="{{ application.height }}"></td>
+    </tr>
+    <tr>
+        <td><label for="volumn">填料体积: </label></td> <td><input type="text" name="volumn" id="volumn" value="{{ application.volumn }}"></td>
+        <td><label for="storage">保存液: </label></td><td><input type="text" name="storage" id="storage" value="{{ application.storage }}"></td>
+
+    </tr>
+    <tr>
+        <td><label for="hetp">柱效: </label><td> <input type="text" name="hetp" id="hetp" value="{{ application.hetp }}"></td>
+        <td>  <label for="AS">对称因子: </label></td><td> <input type="text" name="AS" id="AS" value="{{ application.AS }}"></td>
+
+    </tr>
+    <tr>
+        <td><label for="nppeditorstaff">NPP编辑人:  </label></td><td><input type="text" name="nppeditorstaff" id="nppeditorstaff" value="{{ application.nppeditorstaff }}"></td>
+        <td><label for="cat">填料货号:  </label><td><input type="text" name="cat" id="cat" value="{{ application.cat }}"></td>
+
+
+    </tr>
+    <tr>
+    <td><label for="lot">填料批号:  </label><td><input type="text" name="lot" id="lot" value="{{ application.lot }}"></td>
+    <td> <label for="expire">填料有效期:  </label><td><input type="text" name="expire" id="expire" value="{{ application.expire }}"></td>
+    </tr>
+                <tr>
+    <td><label for="resinid">填料编号:  </label><td><input type="text" name="resinid" id="resinid" value="{{ application.resinid }}"></td>
+    <td> <label for="usedtime">填料已使用次数:  </label><td><input type="text" name="usedtime" id="usedtime" value="{{ application.usedtime }}"></td>
+    </tr>
+                 <tr>
+    <td><label for="feedbackeditor">反馈编辑人:  </label><td><input type="text" name="feedbackeditor" id="feedbackeditor" value="{{ application.feedbackeditor }}"> </td>
+    <td> <label for="maxpressure">最大压力:  </label><td><input type="text" name="maxpressure" id="maxpressure" value="{{ application.maxpressure }}"></td>
+    </tr>
+    <tr>
+    <td><label for="maxvictory">最大力量:  </label><td><input type="text" name="maxvictory" id="maxvictory" value="{{ application.maxvictory }}"></td>
+    </tr>
+{#                {% endfor %}#}
+</table>
+        <input type="submit" id="submit" name="submit" value="添加">
+    </form>
+
+{% endblock%}

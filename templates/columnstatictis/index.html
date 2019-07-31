@@ -20,38 +20,62 @@
     {#table tr td{#}
     {#    border:1px solid black;#}
     {#}#}
-      .functionModle{
+    {#  .functionModle{#}
             {#width:00px;#}
-            height:100px;
+    {#        height:100px;#}
             {#background-color: green;#}
-            padding-top:10px;
-        }
-    .showpage table{
-       border:1px solid black;
-        border-spacing:0;
-        padding:2px;
-        text-align: center;
-        width:80%;
-        height:80%;
-    }
-    table tr th{
-        border:1px solid black;
+    {#        padding-top:10px;#}
+    {#    }#}
+    {#.showpage table{#}
+    {#   border:1px solid black;#}
+    {#    border-spacing:0;#}
+    {#    padding:2px;#}
+    {#    text-align: center;#}
+    {#    width:80%;#}
+    {#    height:80%;#}
+    {#}#}
+    {#table tr th{#}
+    {#    border:1px solid black;#}
         {#width:50px;#}
-        text-overflow: ellipsis;
-    /* for Firefox,mozilla */
-    -moz-text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    }
-    table tr td{
-        border:1px solid black;
-        text-overflow: ellipsis;
-    /* for Firefox,mozilla */
-    -moz-text-overflow: ellipsis;
-        width:30px;
-    overflow: hidden;
-    white-space: nowrap;
-    }
+    {#    text-overflow: ellipsis;#}
+    {#/* for Firefox,mozilla */#}
+    {#-moz-text-overflow: ellipsis;#}
+    {#overflow: hidden;#}
+    {#white-space: nowrap;#}
+    {#}#}
+    {#table tr td{#}
+    {#    border:1px solid black;#}
+    {#    text-overflow: ellipsis;#}
+    {#/* for Firefox,mozilla */#}
+    {#-moz-text-overflow: ellipsis;#}
+    {#    width:30px;#}
+    {#overflow: hidden;#}
+    {#white-space: nowrap;#}
+    {#}#}
+    {#.showpage{#}
+    {#    width:120%;#}
+    {#}#}
+    {##}
+    {#table{#}
+    {#        table-layout: fixed;#}
+    {#        width: 100%;#}
+    {#        border:0;#}
+    {#        margin: 0;}#}
+    {##}
+    {#table tr td{#}
+    {##}
+    {#    width:6%;#}
+    {#    text-overflow: ellipsis; /* for IE */#}
+    {#    -moz-text-overflow: ellipsis; /* for Firefox,mozilla */#}
+    {#    overflow: hidden;#}
+    {#    white-space: nowrap;#}
+    {#    border: 1px solid;#}
+    {#    text-align: center;#}
+    {#    }#}
+    {#table tr th{#}
+    {#     width:6%;#}
+    {#   }#}
+
     </style>
 
 {% endblock %}
@@ -78,7 +102,7 @@
     <div class="showpage">
     <table>
         <tr>
-            <th>填料名称</th>
+            <th width="10%">填料名称</th>
             <th>装柱项目</th>
             <th>层析柱编号</th>
             <th>填料编号</th>
@@ -91,13 +115,13 @@
             <th>对称性</th>
             <th>HETP</th>
             <th>备注</th>
-            <th>是否删除</th>
-            <th>是否修改</th>
+            <th width="5%">是否删除</th>
+            <th width="5%">是否修改</th>
         </tr>
     {% for column in columns %}
         
             <tr>
-                <td>{{ column.resin.resinName }}</td>
+                <td width="10%">{{ column.resin.resinName }}</td>
                 <td>{{ column.packingproject }}</td>
                 <td>{{ column.columnid }}</td>
                 <td>{{ column.resinid }}</td>
@@ -111,8 +135,8 @@
                 <td>{{ column.hetp }}</td>
                 <td>{{ column.comment }}</td>
 {#                <td><form action="" method="post">{% csrf_token %}<input type="submit" name='submit' id='submit' value="删除"></form></td>#}
-                <td><a href="{% url 'columnstatictis:delete' column.id %}">删除</a></td>
-             <td><a href="{% url 'columnstatictis:modifys' column.id %}">修改</a></td>
+                <td width="5%"><a href="{% url 'columnstatictis:delete' column.id %}">删除</a></td>
+             <td width="5%"><a href="{% url 'columnstatictis:modifys' column.id %}">修改</a></td>
             </tr>
         
         {% empty %}

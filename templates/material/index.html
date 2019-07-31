@@ -9,32 +9,33 @@
             {#background-color: green;#}
             padding-top:10px;
         }
-    .showpage table{
-       border:1px solid black;
-        border-spacing:0;
-        padding:2px;
-        text-align: center;
-        width:80%;
-        height:80%;
-    }
-    table tr th{
-        border:1px solid black;
+    {#.showpage table{#}
+    {#   border:1px solid black;#}
+    {#    border-spacing:0;#}
+    {#    padding:2px;#}
+    {#    text-align: center;#}
+    {#    width:80%;#}
+    {#    height:80%;#}
+    {#}#}
+    {#table tr th{#}
+    {#    border:1px solid black;#}
         {#width:50px;#}
-        text-overflow: ellipsis;
-    /* for Firefox,mozilla */
-    -moz-text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    }
-    table tr td{
-        border:1px solid black;
-        text-overflow: ellipsis;
-    /* for Firefox,mozilla */
-    -moz-text-overflow: ellipsis;
-        width:30px;
-    overflow: hidden;
-    white-space: nowrap;
-    }
+    {#    text-overflow: ellipsis;#}
+    {#/* for Firefox,mozilla */#}
+    {#-moz-text-overflow: ellipsis;#}
+    {#overflow: hidden;#}
+    {#white-space: nowrap;#}
+    {#}#}
+    {#table tr td{#}
+    {#    border:1px solid black;#}
+    {#    text-overflow: ellipsis;#}
+    {#/* for Firefox,mozilla */#}
+    {#-moz-text-overflow: ellipsis;#}
+        {#width:30px;#}
+    {#overflow:hidden;#}
+    {#white-space: nowrap;#}
+    {#    overflow-x: scroll;#}
+    {#}#}
     </style>
 
 {% endblock %}
@@ -61,7 +62,7 @@
     <div class="showpage">
     <table>
         <tr>
-            <th>填料名称</th>
+            <th width="10%">填料名称</th>
             <th>填料类型</th>
             <th>厂家</th>
             <th>基质</th>
@@ -77,31 +78,31 @@
             <th>有效期</th>
             <th>装柱方法类型</th>
             <th>装柱方法</th>
-            <th>是否删除</th>
-            <th>是否修改</th>
+            <th width="5%">是否删除</th>
+            <th width="5%">是否修改</th>
         </tr>
     {% for material in materials %}
         
             <tr>
-                <td>{{ material.resinName }}</td>
-                <td>{{ material.resinaType }}</td>
-                <td>{{ material.brand }}</td>
-                <td>{{ material.matrix }}</td>
-                <td>{{ material.ligand }}</td>
-                <td>{{ material.diameter }}</td>
-                <td>{{ material.Pmax }}</td>
-                <td>{{ material.phRange }}</td>
-                <td>{{ material.storageMethod }}</td>
-                <td>{{ material.compactFactor }}</td>
-                <td>{{ material.dbc }}</td>
-                <td>{{ material.LoadingRangeinProject }}</td>
-                <td>{{ material.PackingVmaxandPmax }}</td>
-                <td>{{ material.expiry }}</td>
-                <td>{{ material.TypeofColomuPackingMethod }}</td>
-                <td>{{ material.ColomuPackingMethod }}</td>
+                <td width="10%" title="{{ material.resinName }}">{{ material.resinName }}</td>
+                <td title="{{ material.resinaType }}">{{ material.resinaType }}</td>
+                <td title="{{ material.brand }}">{{ material.brand }}</td>
+                <td title="{{ material.matrix }}">{{ material.matrix }}</td>
+                <td title="{{ material.ligand }}">{{ material.ligand }}</td>
+                <td title="{{ material.diameter }}">{{ material.diameter }}</td>
+                <td title="{{ material.Pmax }}">{{ material.Pmax }}</td>
+                <td title="{{ material.phRange }}">{{ material.phRange }}</td>
+                <td title="{{ material.storageMethod }}">{{ material.storageMethod }}</td>
+                <td title="{{ material.compactFactor }}">{{ material.compactFactor }}</td>
+                <td title="{{ material.dbc }}">{{ material.dbc }}</td>
+                <td title="{{ material.LoadingRangeinProject }}">{{ material.LoadingRangeinProject }}</td>
+                <td title="{{ material.PackingVmaxandPmax }}">{{ material.PackingVmaxandPmax }}</td>
+                <td title="{{ material.expiry }}">{{ material.expiry }}</td>
+                <td title="{{ material.TypeofColomuPackingMethod }}">{{ material.TypeofColomuPackingMethod }}</td>
+                <td title="{{ material.ColomuPackingMethod }}">{{ material.ColomuPackingMethod }}</td>
 {#                <td><form action="" method="post">{% csrf_token %}<input type="submit" name='submit' id='submit' value="删除"></form></td>#}
-                <td><a href="{% url 'material:delete' material.id %}">删除</a></td>
-             <td><a href="{% url 'material:modifys' material.id %}">修改</a></td>
+                <td width="5%"><a href="{% url 'material:delete' material.id %}">删除</a></td>
+             <td width="5%"><a href="{% url 'material:modifys' material.id %}">修改</a></td>
             </tr>
         
         {% empty %}

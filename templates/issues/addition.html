@@ -8,12 +8,25 @@
 {% block content %}
     <form method="post" action="{% url 'issues:addtion' %}">
     {% csrf_token %}
-        <label>问题类型 <input type="text" name="issuetype" id="issuetype"></label><br/>
-          <label>问题 <input type="text" name="issue" id="issue"></label><br/>
-           <label>原因 <input type="text" name="reason" id="reason"></label><br/>
-
-            <td><label>解决方案 <input type="text" name="solution" id="solution"></label>
-
+{#        <label>问题类型 <input type="text" name="issuetype" id="issuetype"></label><br/>#}
+{#          <label>问题 <input type="text" name="issue" id="issue"></label><br/>#}
+{#           <label>原因 <input type="text" name="reason" id="reason"></label><br/>#}
+{##}
+{#            <td><label>解决方案 <input type="text" name="solution" id="solution"></label>#}
+         <table class="add_modifition">
+            <tr>
+                <td><label for="issuetype">问题类型:</label></td><td> <input type="text" name="issuetype" id="issuetype"></td>
+            </tr>
+            <tr>
+                <td><label for="issue">问题: </label></td><td> <input type="text" name="issue" id="issue"></td>
+            </tr>
+            <tr>
+                <td><label for="reason">原因: </label></td><td> <input type="text" name="reason" id="reason"></td>
+            </tr>
+            <tr>
+                <td><label for="solution">解决方案: </label></td><td><input type="text" name="solution" id="solution"></td>
+            </tr>
+        </table>
         <br>
            <input type="submit" name="submit" id="submit" value="添加">
 

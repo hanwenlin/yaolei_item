@@ -4,62 +4,122 @@
 {% block css_block %}
     <style>
         .functionModle{
-            width:500px;
-            height:300px;
-            background-color: yellow;
+            {#width:500px;#}
+            height:100px;
+            background-color: lightgrey;
+            padding-top: 10px;
         }
+    {#.showpage {#}
+        {#background-color: lightgrey;#}
+    {#}#}
+
+
     .showpage table{
-       border:1px solid black;
-        border-spacing:0;
-        padding:2px;
+       {#border:1px solid white;#}
+       {# border-spacing:0;#}
+       {# padding:2px;#}
         text-align: center;
+        background-color: lightgrey;
     }
-    table tr th{
-        border:1px solid black;
-    }
-    table tr td{
-        border:1px solid black;
+    {#table tr th{#}
+    {#    border:1px solid white;#}
+    {#}#}
+    {#table tr th span{#}
+    {#    display: inline-block;#}
+    {##}
+    {#   background-color: whitesmoke;#}
+    {#    width:100%;#}
+    {#}#}
+    {#table tr th input{#}
+    {#    display: inline-block;#}
+    {##}
+    {#   background-color: whitesmoke;#}
+    {#    width:100%;#}
+    {#}#}
+    {#table tr td{#}
+    {#    border:1px solid white;#}
+    {#}#}
+    form{
+        display: inline;
     }
     </style>
+    <script type="text/javascript">
+        window.onload = function f() {
+            var tag = {{ tag }};
+            table1 = document.getElementById('table1');
+            {#alert(table1);#}
+            table2 = document.getElementById('table2');
+            if(tag=='1'){
+                {#alert(tag);#}
+                {#$('.table1').hide();#}
+                table1.style.display="none";
+            }
+            else if(tag=='2' || tag=='3'){
+                {#$('.table2').hide();#}
+                table2.style.display='none';
+            }
+        }
+    </script>
 
 {% endblock %}
 
 {% block content %}
+{#    {% with tag as tag %}{% endwith %}#}
     <div class="functionModle">
+        异常情况种类：
+        <form method="post" action="{% url 'issues:index' %}">
+            {% csrf_token %}
+            <input type="submit" name="submit" id="submit" value="查找全部">
+{#            <input type="text" name="search" id="search">#}
+        </form>
+        &nbsp;&nbsp;
         <form method="post" action="{% url 'issues:search' %}">
             {% csrf_token %}
             <input type="submit" name="submit" id="submit" value="查找">
             <input type="text" name="search" id="search">
         </form>
-        <br/><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <form method="get" action="{% url 'issues:addtion' %}">
             <input type="submit" name="add" id="add" value="添加">
 {#            <input type="submit" name="modify" id="modify" value="修改">#}
-            <label>问题的添加或者修改<label/>
+{#            <label>问题的添加或者修改<label/>#}
         </form>
+{#        <label>问题的添加或者修改<label/>#}
         <br/><br/>
-        <p>填料问题</p>
-        <form method="get" action="{% url 'issues:issuemeterial_addtion' %}">
-            <input type="submit" name="add_meterial_issue" id="add_meterial_issue" value="添加填料问题">
-{#            <input type="submit" name="modify_meterial_issue" id="modify_meterial_issue" value="修改填料问题">#}
+        填料问题汇总：
+        <form method="post" action="{% url 'issues:index' %}">
+            {% csrf_token %}
+            <input type="submit" name="submit_search" id="submit_search" value="查找全部">
+{#            <input type="text" name="issue_search" id="issue_search">#}
         </form>
+        &nbsp;&nbsp;
         <form method="post" action="{% url 'issues:issuemeterial_search' %}">
             {% csrf_token %}
             <input type="submit" name="submit_search" id="submit_search" value="查找">
             <input type="text" name="issue_search" id="issue_search">
+        </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <form method="get" action="{% url 'issues:issuemeterial_addtion' %}">
+            <input type="submit" name="add_meterial_issue" id="add_meterial_issue" value="添加">
+{#            <input type="submit" name="modify_meterial_issue" id="modify_meterial_issue" value="修改填料问题">#}
         </form>
 
 
 
     </div>
     <p></p>
-    <div class="showpage">
+    <div class="showpage" id="table1">
     <table>
+        <caption title="异常情况种类">异常情况种类</caption>
         <tr>
+{#            <th><input type="submit" value="异常情况种类"></th>#}
+{#            <th><input type="submit" value="问题" readonly></th>#}
+{#            <th><input type="text" value="原因"></th>#}
             <th>异常情况种类</th>
             <th>问题</th>
             <th>原因</th>
             <th>解决方案</th>
+            <th>是否修改</th>
         </tr>
     {% for issu in isssues %}
         
@@ -80,20 +140,23 @@
     </div>
 
     <br/><br/>
-     <div class="showpage">
+     <div class="showpage" id="table2">
     <table>
+    <caption title="异常情况种类">填料问题汇总</caption>
         <tr>
-            <th>时间</th>
-            <th>填料</th>
-            <th>层柱析编号</th>
+            <th><span>时间</span></th>
+            <th><span>填料</span></th>
+            <th><span>层柱析编号</span></th>
+{#            <th><input type="submit" value="问题类型"></th>#}
             <th>问题类型</th>
             <th>实际问题描述</th>
             <th>实际问题解决方案</th>
+            <th>是否修改</th>
         </tr>
     {% for issumeter in issumeters %}
 
             <tr>
-                <td>{{ issumeter.pubtime }}</td>
+                <td>{{ issumeter.pubtime|date:'Y-m-d' }}</td>
                 <td>{{ issumeter.meterial.resinName }}</td>
                 <td>{{ issumeter.ColumnID }}</td>
                 <td>{{ issumeter.issue.issueType }}</td>

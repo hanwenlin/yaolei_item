@@ -11,7 +11,11 @@ from django.db.models import Q
 def index(request):
     isssues = Issues.objects.all()
     isssuemeterials = Issuelists.objects.all()
-    return render(request,'issues/index.html',{"isssues":isssues,"issumeters":isssuemeterials})
+    if request.method == 'POST':
+        tag = '1' if request.POST.get('submit_search') else '2'
+    else:
+        tag = '3'
+    return render(request,'issues/index.html',{"isssues":isssues,"issumeters":isssuemeterials,'tag':tag})
 
 
 
@@ -19,10 +23,14 @@ def search(request):
     search_name = request.POST.get('search')
     # isssues = Issues.objects.filter(id=search_name)
  #   isssues = get_list_or_404(Issues,id=search_name)
+    if request.method == 'POST':
+        tag = '1' if request.POST.get('submit_search') else '2'
+    else:
+        tag = '3'
     isssues = Issues.objects.filter(Q(issueType__contains=search_name)|Q(issue__contains=search_name)|
                                     Q(reason__contains=search_name)|Q(solution__contains=search_name))
 
-    return render(request, 'issues/index.html', {"isssues":isssues})
+    return render(request, 'issues/index.html', {"isssues":isssues,'tag':tag})
 
 @login_required(login_url='/account/login/')
 def addtion(request):
@@ -76,6 +84,10 @@ def issuemeterial_addtion(request):
 def issuemeterial_search(request):
     search_name = request.POST.get('issue_search')
     print(search_name)
+    if request.method == 'POST':
+        tag = '1' if request.POST.get('submit_search') else '2'
+    else:
+        tag = '3'
     # isssues = Issues.objects.filter(id=search_name)
     # isssuemeterials = get_list_or_404(Issuelists,id=search_name)
     isssuemeterials = []
@@ -85,13 +97,14 @@ def issuemeterial_search(request):
                                     Q(solutionMethod__contains=search_name)))
     # isssuemeterials = Issuelists.objects.filter(Practiceissue__contains=search_name)
 
-    return render(request, 'issues/index.html', {"issumeters":isssuemeterials})
+    return render(request, 'issues/index.html', {"issumeters":isssuemeterials,'tag':tag})
 
 
 @login_required(login_url='/account/login/')
 def issuemeterial_modify(request,issuemeterid):
     meterissues = Issuelists.objects.get(id=issuemeterid)
     if request.method == 'POST':
+        tag = '1' if request.POST.get('submit_search') else '2'
         clean_data = request.POST
         pubtime = clean_data.get('pubtime')
         meterial = clean_data.get('meterial')
@@ -105,4 +118,8 @@ def issuemeterial_modify(request,issuemeterid):
         Issuelists.objects.filter(id=issuemeterid).update(pubtime=pubtime,meterial_id=meterial_id,issue_id=issue_id,ColumnID=ColumnID,Practiceissue=Practiceissue,solutionMethod=solutionMethod)
 
         return redirect(reverse('issues:index', args=()))
-    return render(request, 'issues/modiftion_issuemeter.html', {"meterissues": meterissues})
+    else:
+        tag = '3'
+    # tag ='3'
+    print(tag)
+    return render(request, 'issues/modiftion_issuemeter.html', {"meterissues": meterissues,'tag':tag})

@@ -13,8 +13,13 @@ def index(request):
 
 @login_required(login_url='/account/login/')
 def delete(request,column_id):
-    PressureandVelocity.objects.get(id=column_id).delete()
-    return redirect(reverse('columnstatictis:index',args=()))
+    user = request.user
+    if user.has_perm('columnstatictis.delete_columnstatictis'):
+        PressureandVelocity.objects.get(id=column_id).delete()
+        return redirect(reverse('columnstatictis:index',args=()))
+    else:
+        message = '你没有删除该内容的权限'
+        return render(request,'index/prompt_message.html',{"message":message})
 
 def search(request):
     search_name = request.POST.get('search_column')
@@ -63,6 +68,7 @@ def addtion(request):
 
 @login_required(login_url='/account/login/')
 def modifys(request,column_id):
+    user = request.user
     print(column_id)
     column = PressureandVelocity.objects.get(id=column_id)
     if request.method=='POST':
@@ -85,10 +91,10 @@ def modifys(request,column_id):
         resin_id = ResinLabel.objects.get(resinName=resin).id
         print(columnid)
         # PressureandVelocity.objects.filter(id=columnid).update(clean_data)
-
-        PressureandVelocity.objects.filter(id=column_id).update(packingproject=packingproject,columnid=columnid,resinid=resinid,minipackingvelocity=minipackingvelocity,
-                                       maxpackingvelocity=maxpackingvelocity,packingpressure=packingpressure,productionvelocity=productionvelocity,columnheight=columnheight,
-                                       columndimeter=columndimeter,symmetry=symmetry,hetp=hetp,comment=comment, resin_id=resin_id)
+        if user.has_perm('columnstatictis.change_columnstatictis'):
+            PressureandVelocity.objects.filter(id=column_id).update(packingproject=packingproject,columnid=columnid,resinid=resinid,minipackingvelocity=minipackingvelocity,
+                                           maxpackingvelocity=maxpackingvelocity,packingpressure=packingpressure,productionvelocity=productionvelocity,columnheight=columnheight,
+                                           columndimeter=columndimeter,symmetry=symmetry,hetp=hetp,comment=comment, resin_id=resin_id)
         # PressureandVelocity.objects.filter(id=columnid).update(packingproject=packingproject, columnid=columnid,
         #                                                        resinid=resinid, minipackingvelocity=minipackingvelocity,
         #                                                        maxpackingvelocity=maxpackingvelocity,
@@ -97,5 +103,8 @@ def modifys(request,column_id):
         #                                                        columnheight=columnheight,
         #                                                        columndimeter=columndimeter, symmetry=symmetry,
         #                                                        hetp=hetp, comment=comment, resin_id=resin_id)
+        else:
+            message = '你没有修改的权限'
+            return render(request, 'index/prompt_message.html', {"message": message})
         return redirect(reverse('columnstatictis:index', args=()))
     return render(request,'columnstatictis/modiftion.html',{"column":column})

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}DSPD Data Center{% endblock %}
-{% block css_block %}
-{% endblock %}
+{% block css_block %}{% endblock %}
 {% block content %}
     <header>
         <h2>DSPD Data center</h2>
@@ -10,5 +9,6 @@
         <div class="divnav"><a href="{% url 'material:index' %}">Resin Library</a></div>
         <div class="divnav"><a href="{% url 'issues:index' %}">异常情况统计</a></div>
         <div class="divnav"><a href="{% url 'columnstatictis:index' %}">装柱流速和压力统计表</a></div>
+         <div class="divnav"><a href="{% url 'termlist:index' %}">填料申请表</a></div>
     </div>
 {% endblock %}

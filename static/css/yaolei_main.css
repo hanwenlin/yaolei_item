@@ -8,7 +8,7 @@
 }
 
 .divnav{
-        border:1px solid green;
+        /*border:3px solid black;*/
         width:400px;
         height:80px;
         padding:20px;
@@ -16,9 +16,63 @@
         text-align:center;
         line-height: 80px;
         font-size:40px;
-        color:black;
+        background-color:lightgrey ;
     }
 
- .divnav>a{
+.divnav>a{
         text-decoration: none;
+        color:black;
     }
+.showpage{
+        width:120%;
+    }
+
+.showpage table{
+        border:1px solid black;
+        border-left:0;
+        table-layout: fixed;
+        border-spacing:0;
+        padding:2px;
+        text-align: center;
+        width:80%;
+        height:80%;
+    }
+
+.showpage table tr th{
+        border-left:1px solid black;
+        text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+.showpage table tr td{
+        border-left:1px solid black;
+        border-top:1px solid black;
+        width:6%;
+        text-overflow: ellipsis; /* for IE */
+        -moz-text-overflow: ellipsis; /* for Firefox,mozilla */
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+        }
+
+/*.showpage table tr td{*/
+        /*border:1px solid black;*/
+        /*text-overflow: ellipsis;*/
+    /*!* for Firefox,mozilla *!*/
+    /*-moz-text-overflow: ellipsis;*/
+        /*!*width:30px;*!*/
+    /*overflow: hidden;*/
+    /*white-space: nowrap;*/
+    /*}*/
+
+
+
+/*.showpage  table{*/
+            /*table-layout: fixed;*/
+            /*width: 100%;*/
+            /*border:0;*/
+            /*margin: 0;}*/
+

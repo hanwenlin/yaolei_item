@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block  title %}{% endblock %}
+{% block css_block %}{% endblock %}
+{% block content %}
+    <form method="post" action="{% url 'termlist:addtion' %}">{% csrf_token %}
+            <table class="add_modifition">
+    <tr>
+
+        <td><label for="productnumber">项目号: </label></td><td><input type="text" name="productnumber" id="productnumber"></td>
+        <td><label for="producttime">生产时间: </label></td><td><input type="text" name="producttime" id="producttime"></td>
+    </tr>
+    <tr>
+
+        <td><label for="editorstaff">编辑人: </label></td><td><input type="text" name="editorstaff" id="editorstaff"></td>
+        <td><label for="resinname">填料名称: </label> </td><td> <input type="text" name="resinname" id="resinname"></td>
+
+    </tr>
+    <tr>
+
+        <td><label for="cycletime">循环次数: </label></td><td><input type="text" name="cycletime" id="cycletime"></td>
+        <td><label for="public">是否专用:  </label></td><td><input type="text" name="public" id="public"></td>
+    </tr>
+    <tr>
+        <td> <label for="diameter">层析柱直径: </label></td><td><input type="text" name="diameter" id="diameter"></td>
+        <td><label for="height">柱高: </label></td><td><input type="text" name="height" id="height"></td>
+    </tr>
+    <tr>
+        <td><label for="volumn">填料体积: </label></td> <td><input type="text" name="volumn" id="volumn"></td>
+        <td><label for="storage">保存液: </label></td><td><input type="text" name="storage" id="storage"></td>
+
+    </tr>
+    <tr>
+        <td><label for="hetp">柱效: </label><td> <input type="text" name="hetp" id="hetp"></td>
+        <td>  <label for="AS">对称因子: </label></td><td> <input type="text" name="AS" id="AS"></td>
+
+    </tr>
+    <tr>
+        <td><label for="nppeditorstaff">NPP编辑人:  </label></td><td><input type="text" name="nppeditorstaff" id="nppeditorstaff"></td>
+        <td><label for="cat">填料货号:  </label><td><input type="text" name="cat" id="cat"></td>
+
+
+    </tr>
+    <tr>
+    <td><label for="lot">填料批号:  </label><td><input type="text" name="lot" id="lot"></td>
+    <td> <label for="expire">填料有效期:  </label><td><input type="text" name="expire" id="expire"></td>
+    </tr>
+                <tr>
+    <td><label for="resinid">填料编号:  </label><td><input type="text" name="resinid" id="resinid"></td>
+    <td> <label for="usedtime">填料已使用次数:  </label><td><input type="text" name="usedtime" id="usedtime"></td>
+    </tr>
+                 <tr>
+    <td><label for="feedbackeditor">反馈编辑人:  </label><td><input type="text" name="feedbackeditor" id="feedbackeditor"></td>
+    <td> <label for="maxpressure">最大压力:  </label><td><input type="text" name="maxpressure" id="maxpressure"></td>
+    </tr>
+    <tr>
+    <td><label for="maxvictory">最大力量:  </label><td><input type="text" name="maxvictory" id="maxvictory"></td>
+    </tr>
+</table>
+        <input type="submit" id="submit" name="submit" value="添加">
+    </form>
+{% endblock %}

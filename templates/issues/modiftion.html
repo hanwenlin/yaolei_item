@@ -8,12 +8,27 @@
 {% block content %}
     <form method="post" action="{% url 'issues:modifys' issue.id %}">
     {% csrf_token %}
-        <label>异常情况种类 <input type="text" name="issuetype" id="issuetype" value="{{ issue.issueType }}"></label><br/>
-          <label>问题 <input type="text" name="issue" id="issue" value="{{ issue.issue }}"></label><br/>
-           <label>原因 <input type="text" name="reason" id="reason" value="{{ issue.reason }}"></label>
-        <br/>
-            <td><label>解决方案 <input type="text" name="solution" id="solution" value="{{ issue.solution }}"></label>
-        <br>
+{#        <label>异常情况种类 <input type="text" name="issuetype" id="issuetype" value="{{ issue.issueType }}"></label><br/>#}
+{#          <label>问题 <input type="text" name="issue" id="issue" value="{{ issue.issue }}"></label><br/>#}
+{#           <label>原因 <input type="text" name="reason" id="reason" value="{{ issue.reason }}"></label>#}
+{#        <br/>#}
+{#            <td><label>解决方案 <input type="text" name="solution" id="solution" value="{{ issue.solution }}"></label>#}
+           <table class="add_modifition">
+            <tr>
+                <td><label for="issuetype">问题类型:</label></td><td> <input type="text" name="issuetype" id="issuetype" value="{{ issue.issueType }}"></td>
+            </tr>
+            <tr>
+                <td><label for="issue">问题: </label></td><td> <input type="text" name="issue" id="issue" value="{{ issue.issue }}"></td>
+            </tr>
+            <tr>
+                <td><label for="reason">原因: </label></td><td> <input type="text" name="reason" id="reason" value="{{ issue.reason }}"></td>
+            </tr>
+            <tr>
+                <td><label for="solution">解决方案: </label></td><td><input type="text" name="solution" id="solution" value="{{ issue.solution }}"></td>
+            </tr>
+        </table>
+
+                <br>
            <input type="submit" name="submit" id="submit" value="修改">
 
     </form>

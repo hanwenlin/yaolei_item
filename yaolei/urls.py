@@ -24,4 +24,5 @@ urlpatterns = [
     path('issues/',include('issues.urls')),
     path('columnstatictis/',include('columnstatictis.urls')),
     path('account/',include('account.urls')),
+    path('termlist/',include('termlist.urls')),
 ]

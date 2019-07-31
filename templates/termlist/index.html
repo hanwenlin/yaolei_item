@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}项目申请表{% endblock %}
+{% block css_block %}{% endblock %}
+{% block content %}
+ <div class="functionModle">
+        <form method="post" action="{% url 'termlist:search' %}">
+            {% csrf_token %}
+            <label for="productnumber">项目号:<input type="text" name="productnumber" id="productnumber"></label>&nbsp;&nbsp;&nbsp;
+            <label for="producttime">生产时间:<input type="text" name="producttime" id="producttime"></label>&nbsp;&nbsp;&nbsp;
+            <input type="submit" name="submit" id="submit" value="填料信息">
+        </form>
+        <br/>
+        <form method="get" action="{% url 'termlist:addtion' %}">
+            <input type="submit" name="add" id="add" value="添加">
+{#            <input type="submit" name="modify" id="modify" value="修改">#}
+        </form>
+    </div>
+{% endblock %}

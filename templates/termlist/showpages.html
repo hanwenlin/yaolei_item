@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}填料申请表详细信息{% endblock %}
+{% block css_block %}{% endblock %}
+{% block content %}
+      <div class="showpage">
+    <table>
+        <tr>
+            <th>编辑人</th>
+            <th>填料名称</th>
+            <th>循环次数</th>
+            <th>是否专用</th>
+            <th>层析柱直径</th>
+            <th>柱高</th>
+            <th>填料体积</th>
+            <th>保存液</th>
+            <th>柱效</th>
+            <th>对称因子</th>
+            <th>NPP编辑人</th>
+            <th>填料货号</th>
+            <th>填料批号</th>
+            <th>填料有效期</th>
+            <th>填料编号</th>
+            <th>填料已使用次数</th>
+            <th>反馈编辑人</th>
+            <th>最大压力</th>
+            <th>最大力量</th>
+            <th>修改</th>
+        </tr>
+    {% for application in applications %}
+
+            <tr>
+                <td>{{ application.editorstaff }}</td>
+                <td>{{ applications.resinname }}</td>
+                <td>{{ application.cycletime}}</td>
+                <td>{{ application.public }}</td>
+                <td>{{ application.diameter }}</td>
+                <td>{{ application.height }}</td>
+                <td>{{ application.volumn }}</td>
+                <td>{{ application.storage }}</td>
+                <td>{{ application.hetp}}</td>
+                <td>{{ application.AS }}</td>
+                <td>{{ application.nppeditorstaff}}</td>
+                <td>{{ application.cat }}</td>
+                <td>{{ application.lot }}</td>
+                <td>{{ application.expire}}</td>
+                <td>{{ application.resinid }}</td>
+                <td>{{ application.usedtime}}</td>
+                <td>{{ application.feedbackeditor }}</td>
+                <td>{{ application.maxpressure }}</td>
+                <td>{{ application.maxvictory }}</td>
+             <td><a href="{% url 'termlist:modifys' application.id %}">修改</a></td>
+            </tr>
+
+        {% empty %}
+        <p>没有物料</p>
+    {% endfor %}
+    </table>
+{% endblock %}
